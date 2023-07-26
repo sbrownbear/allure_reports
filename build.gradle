@@ -1,0 +1,44 @@
+plugins {
+    id 'java-library'
+    id("io.qameta.allure") version "2.10.0" // Подключили allure с сайта plugins.gradle.org/plugin/io.qameta.allure
+}
+
+group "org.example"
+version "1.0-SNAPSHOP"
+
+// Подключили allure
+allure {
+    report {
+        version.set("2.19.0")
+    }
+    adapter {  // Отвечает за появление папки build/allure-results
+        aspectjWeaver.set(true) // Обработка аннотации @Step()
+        frameworks {
+            junit5 { // Название фреймворка
+                adapterVersion.set("2.19.0") // Версия интеграции фреймворка и Allure
+            }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(
+            "org.junit.jupiter:junit-jupiter-api:5.9.0",
+            "com.codeborne:selenide:6.14.1",
+            "io.qameta.allure:allure-selenide:2.19.0" // Подключили allure mvnrepository.com/artifact/io.qameta.allure/allure-selenide/2.20.1
+    )
+
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.9.0')
+}
+
+// Allure не видит кириллицу, решение проблемы
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+test {
+    useJUnitPlatform()
+}

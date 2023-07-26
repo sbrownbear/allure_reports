@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="allure.LabelsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-07-26T19:34:47" hostname="DESKTOP-7Q6S0KE" time="0.081">
+  <properties/>
+  <testcase name="Создание Issue для авторизации пользователя" classname="allure.LabelsTest" time="0.081"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
