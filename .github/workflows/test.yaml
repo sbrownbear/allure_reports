@@ -1,0 +1,20 @@
+name: test
+
+on: [push]
+
+jobs:
+  test:
+    # Где запускаем
+    runs-on: ubuntu-latest
+    # Что делаем
+    steps:
+      # Выкачиваем репозиторий
+      - uses: actions/checkout@v3
+      # Настраиваем java
+      - uses: actions/setup-node@v3
+        with:
+          distribution: 'zulu'
+          java-version: '8'
+      # Запускаем тесты
+      - run: ./gradlew clean test
+
